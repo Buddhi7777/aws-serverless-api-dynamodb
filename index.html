@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sahu Tech Innovations | Internship Form</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* Updated to a Cloud-themed Gradient */
+      background: linear-gradient(135deg, #232f3e 0%, #37475a 50%, #f2f3f3 100%);
+      background-attachment: fixed;
+    }
+
+    h1 {
+      margin-top: 20px;
+      color: #ffffff; /* White for better contrast on dark background */
+      background-color: #ff9900; /* AWS Orange */
+      padding: 10px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+
+    form {
+      background-color: rgba(255, 255, 255, 0.95); /* Slight transparency */
+      padding: 25px;
+      margin-top: 20px;
+      width: 45%;
+      border-radius: 25px;
+      /* Updated border to AWS blue */
+      border: 3px groove #232f3e;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    form:hover {
+      transform: scale(1.03);
+      border-color: #ff9900; /* Changes to AWS Orange on hover */
+    }
+
+    h2 {
+      text-align: center;
+      color: #232f3e; /* Deep AWS Navy */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-size: large;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 15px;
+      border: 1px solid #ccc;
+      box-sizing: border-box; /* Ensures padding doesn't break layout */
+    }
+
+    input[type="submit"] {
+      width: 250px;
+      background-color: #ff9900; /* AWS Orange */
+      color: #232f3e;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 20px;
+      transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #ec7211; /* Darker AWS Orange */
+      color: white;
+    }
+
+    footer {
+      margin-top: auto; /* Pushes footer to bottom */
+      padding-bottom: 20px;
+      font-size: 18px;
+      color: #ffffff;
+      text-align: center;
+      text-shadow: 1px 1px 2px black;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Welcome to Sahu Tech Innovations</h1>
+
+  <form action="https://abc123.execute-api.ap-south-1.amazonaws.com/dev" method="post">
+    <h2>AWS Cloud Internship Registration</h2>
+
+    <label for="fname" style="color:#232f3e;">First Name</label>
+    <input type="text" id="fname" name="fname" placeholder="D." required>
+
+    <label for="lname" style="color:#232f3e;">Last Name</label>
+    <input type="text" id="lname" name="lname" placeholder="Buddeshwar" required>
+
+    <label for="email" style="color:#232f3e;">Email ID</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="message" style="color:#232f3e;">Message</label>
+    <textarea id="message" name="message" rows="4" placeholder="Tell us about your interest in EC2, Lambda, or DevOps..." required></textarea>
+
+    <div style="text-align:center; margin-top:15px;">
+      <input type="submit" value="Submit">
+    </div>
+  </form>
+
+  <footer>
+    AWS Cloud Internship | Sahu Tech Innovations
+  </footer>
+
+  <script>
+    const form = document.querySelector('form');
+
+    form.addEventListener('mouseover', () => {
+      form.style.transform = 'scale(1.05)';
+    });
+
+    form.addEventListener('mouseout', () => {
+      form.style.transform = 'scale(1)';
+    });
+  </script>
+
+</body>
+</html>

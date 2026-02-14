@@ -1,0 +1,74 @@
+import json
+import boto3
+import urllib.parse
+
+dynamodb = boto3.client('dynamodb')
+
+def lambda_handler(event, context):
+    try:
+        response = route_request(
+            event['httpMethod'],
+            event.get('queryStringParameters'),
+            event.get('body')
+        )
+        return response
+    except Exception as e:
+        return {
+            'statusCode': 500,
+            'body': json.dumps({'error': str(e)})
+        }
+
+def route_request(method, query_params, body):
+
+    if method == 'GET':
+        try:
+            with open('index.html', 'r') as file:
+                html_content = file.read()
+            return {
+                'statusCode': 200,
+                'headers': {'Content-Type': 'text/html'},
+                'body': html_content
+            }
+        except Exception as e:
+            return {
+                'statusCode': 500,
+                'body': json.dumps({'error': str(e)})
+            }
+
+    elif method == 'POST':
+        try:
+            save_intern_record(body)
+            with open('success.html', 'r') as file:
+                html_content = file.read()
+            return {
+                'statusCode': 200,
+                'headers': {'Content-Type': 'text/html'},
+                'body': html_content
+            }
+        except Exception as e:
+            return {
+                'statusCode': 500,
+                'body': json.dumps({'error': str(e)})
+            }
+
+def save_intern_record(body):
+
+    parsed_data = urllib.parse.parse_qs(body)
+
+    name = parsed_data.get('name', [''])[0]
+    email = parsed_data.get('email', [''])[0]
+    domain = parsed_data.get('domain', [''])[0]
+
+    dynamodb.put_item(
+        TableName='sahu_intern_records',
+        Item={
+            'email': {'S': email},
+            'name': {'S': name},
+            'domain': {'S': domain}
+        }
+    )
+
+    return {
+        'statusCode': 200,
+        'body': json.dumps({'message': 'Intern record saved successfully'})
+    }
