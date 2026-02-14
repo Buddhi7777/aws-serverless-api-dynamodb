@@ -60,7 +60,7 @@ def save_intern_record(body):
     domain = parsed_data.get('domain', [''])[0]
 
     dynamodb.put_item(
-        TableName='sahu_intern_records',
+        TableName='ProjectDB',
         Item={
             'email': {'S': email},
             'name': {'S': name},
